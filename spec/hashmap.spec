@@ -36,6 +36,14 @@ describe  do
       expect(test.buckets[3].value).to eq(4)
     end
 
+    it "overrides a node" do 
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Rama', 5)
+      
+      expect(test.buckets[3].value).to eq(5)
+    end
+
 
 
 

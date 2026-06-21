@@ -25,8 +25,12 @@ class HashMap
   
   def set(key, value)
   index = hash(key)
+    if @buckets[index] != nil && @buckets[index].key == key
+      @buckets[index].value = value
+      return
+    end
     @buckets[index] = Node.new(key, value)
-    # need guard clause for existing entry
+    # need guard clause for ex
   end
 
 end
