@@ -1,9 +1,16 @@
 class HashMap
+  attr_accessor :capacity
+  
   def initialize
     @load_factor = 0.75
     @capacity = 16
+    @buckets = []
   end
   # raise IndexError if index.negative? || index >= @buckets.length
+
+  def generate_index(hash_code)
+    hash_code.abs % @capacity
+  end
 
   def hash(key)
     hash_code = 0
@@ -13,5 +20,7 @@ class HashMap
         
     hash_code
   end
+
+  
 
 end
