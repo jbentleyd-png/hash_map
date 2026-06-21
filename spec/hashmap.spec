@@ -36,5 +36,18 @@ describe  do
 
   end
 
+  describe "set" do
+    it "creates a node" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      
+      expect(test.buckets[3].value).to eq(4)
+    end
+
+
+
+
+  end
+
 end
 # this seems to have been a pure hypothetical
