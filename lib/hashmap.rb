@@ -17,17 +17,14 @@ class HashMap
     prime_number = 31
         
     key.each_char { |char| hash_code = prime_number * hash_code + char.ord }
-        
-    hash_code
-  end
-
-  def generate_index(hash_code)
+    
     hash_code.abs % @capacity
   end
+
+
   
   def set(key, value)
-    hash_code = hash(key)
-    index = generate_index(hash_code)
+  index = hash(key)
     @buckets[index] = Node.new(key, value)
     # need guard clause for existing entry
   end
