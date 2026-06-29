@@ -79,4 +79,16 @@ class HashMap
   
   end
 
+  def get(key)
+    index = hash(key)
+    current = @buckets[index]
+    return nil if current.nil?
+    loop do 
+      return current.value if current.key == key 
+      break if current.next_node.nil?
+      current = current.next_node
+    end
+    nil
+  end
+
 end

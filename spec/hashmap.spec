@@ -150,4 +150,28 @@ describe  do
       expect(test.buckets.length).to eq(32)
     end
   end
+
+
+  describe "get" do
+    
+    it "works on a simple set of buckets" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Robin', 9)
+      
+      
+      expect(test.get('Robin')).to eq(9)
+    end
+
+    it "works when one bucket is a linked list" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Robin', 4)
+      test.set('Sita', 5)
+      
+      expect(test.get('Sita')).to eq(5)
+    end
+
+  end
+
 end
