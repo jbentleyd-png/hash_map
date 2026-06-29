@@ -91,4 +91,16 @@ class HashMap
     nil
   end
 
+  def has?(key)
+    index = hash(key)
+    current = @buckets[index]
+    return false if current.nil?
+    loop do 
+      return true if current.key == key 
+      break if current.next_node.nil?
+      current = current.next_node
+    end
+    false
+  end
+
 end

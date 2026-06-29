@@ -174,4 +174,40 @@ describe  do
 
   end
 
+    describe "has?" do
+    
+    it "returns false when bucket is empty" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      
+      expect(test.has?('Robin')).to eq(false)
+    end
+
+    it "returns false when bucket isn;t empty but key is wrong" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      
+      expect(test.has?('Sita')).to eq(false)
+    end
+
+    it "works on a simple set of buckets" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Robin', 9)
+      
+      
+      expect(test.has?('Robin')).to eq(true)
+    end
+
+    it "works when one bucket is a linked list" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Robin', 4)
+      test.set('Sita', 5)
+      
+      expect(test.has?('Sita')).to eq(true)
+    end
+
+  end
+
 end
