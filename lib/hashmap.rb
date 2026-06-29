@@ -56,6 +56,7 @@ class HashMap
   current = @buckets[index]
     if current.nil?
       @buckets[index] = Node.new(key, value)
+      self.redistribute
       return
     end 
 
@@ -72,6 +73,7 @@ class HashMap
       end
       
       current.next_node = Node.new(key, value)
+      self.redistribute
 
     end
   

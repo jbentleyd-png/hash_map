@@ -64,6 +64,25 @@ describe  do
       expect(sita_sama.value).to eq(69)
     end
 
+    it "doubles capacity after setting the 13th item" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('ice cream', 'white')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      test.set('money', 'green')
+
+      expect(test.buckets.length).to eq(32)
+    end
+
 
 
   end
@@ -86,6 +105,7 @@ describe  do
       
       expect(test.length).to eq(3)
     end
+
 
   end
 
