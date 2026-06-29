@@ -69,5 +69,26 @@ describe  do
 
   end
 
+  describe "length" do
+    
+    it "works on a simple set of buckets" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Robin', 4)
+      
+      expect(test.length).to eq(2)
+    end
+
+    it "works when one bucket is a linked list" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Robin', 4)
+      test.set('Sita', 5)
+      
+      expect(test.length).to eq(3)
+    end
+
+  end
+
 end
 # this seems to have been a pure hypothetical

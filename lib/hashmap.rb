@@ -21,7 +21,23 @@ class HashMap
     hash_code.abs % @capacity
   end
 
+  def length
+    count = 0
+    @buckets.each do |bucket|
+      next if bucket.nil?
+      current = bucket
+      loop do 
+        count += 1
+        break if current.next_node.nil?
+        current = current.next_node
+      end
+    end
+    count
+  end
 
+  def redistribute
+    # needs length function to work.
+  end
   
   def set(key, value)
   index = hash(key)
