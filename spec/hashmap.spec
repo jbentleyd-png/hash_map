@@ -44,6 +44,26 @@ describe  do
       expect(test.buckets[3].value).to eq(5)
     end
 
+    it "adds a node when one is in a bucket" do 
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Sita', 5)
+      
+      return if test.buckets[3].next_node.nil?
+      sita_sama = test.buckets[3].next_node
+      expect(sita_sama.value).to eq(5)
+    end
+
+     it "overrides a linked node" do 
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Sita', 5)
+      test.set('Sita', 69)
+      
+      return if test.buckets[3].next_node.nil?
+      sita_sama = test.buckets[3].next_node
+      expect(sita_sama.value).to eq(69)
+    end
 
 
 
