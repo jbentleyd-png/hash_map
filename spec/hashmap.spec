@@ -8,7 +8,6 @@ describe  do
       test = HashMap.new
       hash_code = test.hash('Benjamin')
       index = hash_code.abs % test.capacity
-      p index
       expect(index).to be_between(0, 15).inclusive
     end
     
@@ -90,5 +89,45 @@ describe  do
 
   end
 
+
+  describe "redistribute" do
+    it "doesn't trigger for 12 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('ice cream', 'white')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      
+      expect(test.redistribute).to eq(nil)
+    end
+
+    it "doubles capacity for 13 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('ice cream', 'white')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      test.set('money', 'green')
+
+      test.redistribute
+      
+      expect(test.buckets.length).to eq(32)
+    end
+  end
 end
-# this seems to have been a pure hypothetical

@@ -3,9 +3,9 @@ require_relative 'node'
 class HashMap
   attr_accessor :capacity, :buckets
   
-  def initialize
+  def initialize(capacity = 16)
     @load_factor = 0.75
-    @capacity = 16
+    @capacity = capacity
     @buckets = Array.new(@capacity)
   end
   # raise IndexError if index.negative? || index >= @buckets.length
@@ -36,7 +36,19 @@ class HashMap
   end
 
   def redistribute
-    # needs length function to work.
+    return nil if self.length <= @capacity * @load_factor
+    @capacity *= 2
+    old_buckets = @buckets
+    @buckets = Array.new(@capacity)
+    old_buckets.each do |bucket|
+      next if bucket.nil?
+      current = bucket
+      loop do 
+        self.set(current.key, current.value)
+        break if current.next_node.nil?
+        current = current.next_node
+      end
+    end
   end
   
   def set(key, value)
