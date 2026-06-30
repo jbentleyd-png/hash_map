@@ -322,7 +322,6 @@ describe  do
       test.set('jacket', 'blue')
       test.set('kite', 'pink')
       test.set('lion', 'golden')
-      test.keys
       
       output = %w[apple banana carrot dog elephant frog grape hat jacket kite lion]
 
@@ -355,7 +354,6 @@ describe  do
       test.set('jacket', 'blue')
       test.set('kite', 'pink')
       test.set('lion', 'golden')
-      test.keys
       
       output = %w[red yellow orange brown gray green purple black blue pink golden]
 
@@ -374,5 +372,31 @@ describe  do
     end
   end
 
+
+  describe "entries" do
+    it "works on 4 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      
+      
+      output = [['apple', 'red'],['banana', 'yellow'],['carrot', 'orange'], ['dog', 'brown']]
+
+      expect(test.entries.sort).to eq(output.sort)
+    end
+
+  it "works on linked list buckets" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Jackson', 69)
+      test.set('Sita', 5)
+
+      output = [['Rama', 4],['Jackson', 69],['Sita', 5]]
+      
+      expect(test.entries.sort).to eq(output.sort)
+    end
+  end
 
 end

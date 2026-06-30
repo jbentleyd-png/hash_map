@@ -161,4 +161,18 @@ class HashMap
     end
     output
   end
+
+  def entries
+        output = []
+    @buckets.each do |bucket|
+      next if bucket.nil?
+      current = bucket
+      loop do 
+        output.push [current.key, current.value]
+        break if current.next_node.nil?
+        current = current.next_node
+      end
+    end
+    output
+  end
 end
