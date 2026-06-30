@@ -265,4 +265,114 @@ describe  do
       expect(test.remove('Jackson')).to eq(nil)
     end
   end
+
+  describe "clear" do
+    it "removes 12 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('ice cream', 'white')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      test.clear
+      
+      expect(test.length).to eq(0)
+    end
+
+    it "resets capacity when removing 13 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('ice cream', 'white')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      test.set('money', 'green')
+
+      test.clear
+      
+      expect(test.buckets.length).to eq(16)
+    end
+  end
+
+  describe "keys" do
+    it "works on 11 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      test.keys
+      
+      output = %w[apple banana carrot dog elephant frog grape hat jacket kite lion]
+
+      expect(test.keys.sort).to eq(output.sort)
+    end
+
+  it "works on linked list buckets" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Jackson', 4)
+      test.set('Sita', 5)
+
+      output = %w[Rama Jackson Sita]
+      
+      expect(test.keys.sort).to eq(output.sort)
+    end
+  end
+
+  describe "values" do
+    it "works on 11 items" do
+      test = HashMap.new
+      test.set('apple', 'red')
+      test.set('banana', 'yellow')
+      test.set('carrot', 'orange')
+      test.set('dog', 'brown')
+      test.set('elephant', 'gray')
+      test.set('frog', 'green')
+      test.set('grape', 'purple')
+      test.set('hat', 'black')
+      test.set('jacket', 'blue')
+      test.set('kite', 'pink')
+      test.set('lion', 'golden')
+      test.keys
+      
+      output = %w[red yellow orange brown gray green purple black blue pink golden]
+
+      expect(test.values.sort).to eq(output.sort)
+    end
+
+  it "works on linked list buckets" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Jackson', 69)
+      test.set('Sita', 5)
+
+      output = [4, 69, 5]
+      
+      expect(test.values.sort).to eq(output.sort)
+    end
+  end
+
+
 end

@@ -128,4 +128,37 @@ class HashMap
       current = current.next_node
     end
   end
+
+  def clear
+    @capacity = 16
+    @buckets = Array.new(@capacity)
+  end
+
+  def keys
+    output = []
+    @buckets.each do |bucket|
+      next if bucket.nil?
+      current = bucket
+      loop do 
+        output.push current.key
+        break if current.next_node.nil?
+        current = current.next_node
+      end
+    end
+    output
+  end
+
+  def values
+    output = []
+    @buckets.each do |bucket|
+      next if bucket.nil?
+      current = bucket
+      loop do 
+        output.push current.value
+        break if current.next_node.nil?
+        current = current.next_node
+      end
+    end
+    output
+  end
 end
