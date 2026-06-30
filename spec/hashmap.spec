@@ -174,7 +174,7 @@ describe  do
 
   end
 
-    describe "has?" do
+  describe "has?" do
     
     it "returns false when bucket is empty" do
       test = HashMap.new
@@ -183,7 +183,7 @@ describe  do
       expect(test.has?('Robin')).to eq(false)
     end
 
-    it "returns false when bucket isn;t empty but key is wrong" do
+    it "returns false when bucket isn't empty but key is wrong" do
       test = HashMap.new
       test.set('Rama', 4)
       
@@ -210,4 +210,59 @@ describe  do
 
   end
 
+
+  describe "remove" do
+    
+    it "removes nothing if there is nothing in the bucket" do
+      test = HashMap.new
+      expect(test.remove('Rama')).to eq(nil)
+    end
+
+    it "removes a singular node in a bucket" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.remove('Rama')
+      
+      expect(test.length).to eq(0)
+    end
+
+    it "removes the first node in a bucket" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Jackson', 4)
+      test.set('Sita', 5)
+      test.remove('Rama')
+
+      expect(test.length).to eq(2)
+    end
+
+    it "removes the second node in a bucket" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Jackson', 4)
+      test.set('Sita', 5)
+      test.remove('Jackson')
+
+      expect(test.length).to eq(2)
+    end
+
+    it "removes the third node in a bucket" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Jackson', 4)
+      test.set('Sita', 5)
+      test.remove('Sita')
+
+      expect(test.length).to eq(2)
+    end
+
+
+    it "removes nothing if it is the right bucket but the wrong key" do
+      test = HashMap.new
+      test.set('Rama', 4)
+      test.set('Sita', 5)
+
+      expect(test.remove('Jackson')).to eq(nil)
+    end
+  end
 end

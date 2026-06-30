@@ -103,4 +103,30 @@ class HashMap
     false
   end
 
+  def remove(key)
+    index = hash(key)
+    current = @buckets[index]
+    previous = nil
+    
+    return nil if current.nil?
+
+
+
+    
+    loop do 
+      if current.key == key 
+        @buckets[index] = current.next_node if previous.nil?
+
+        previous.next_node = current.next_node if previous != nil
+        return
+      end
+
+      return nil if current.next_node.nil?
+      previous = current
+      current = current.next_node
+    end
+    
+
+  
+  end
 end
