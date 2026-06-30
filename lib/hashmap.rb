@@ -8,7 +8,7 @@ class HashMap
     @capacity = capacity
     @buckets = Array.new(@capacity)
   end
-  # raise IndexError if index.negative? || index >= @buckets.length
+
 
 
 
@@ -17,8 +17,10 @@ class HashMap
     prime_number = 31
         
     key.each_char { |char| hash_code = prime_number * hash_code + char.ord }
-    
-    hash_code.abs % @capacity
+  
+    index = hash_code.abs % @capacity
+    raise IndexError if index.negative? || index >= @buckets.length
+    index
   end
 
   def length
@@ -125,8 +127,5 @@ class HashMap
       previous = current
       current = current.next_node
     end
-    
-
-  
   end
 end
